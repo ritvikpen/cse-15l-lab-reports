@@ -18,6 +18,6 @@ _weird_ __text__
  * a
  * list
 
- # Here's the screenshot
+# Here's the screenshot
 
- ![Screenshot](screenshot.png)
+![Screenshot](screenshot.png)
