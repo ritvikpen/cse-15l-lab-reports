@@ -17,3 +17,7 @@ _weird_ __text__
  * Or 
  * a
  * list
+
+ # Here's the screenshot
+
+ ![Screenshot](screenshot.png)
