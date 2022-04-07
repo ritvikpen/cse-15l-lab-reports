@@ -14,6 +14,7 @@ Visual Studio Code is the text editor we will be using in this class. It is impo
 4. Once your setup is complete, you should see VS Code pop up looking something like this. ![VS Code App](VSCodeApp.png)
 
 For now, this is all you need to do. Opening and editing programs on VS Code is fairly easy (just click File>Open), but we will go over the process later, as needed. 
+
 ___
 
 ## Remotely Connecting
@@ -33,13 +34,89 @@ Connecting your personal computer to remote servers is an important part of this
 
 7. After clicking enter, you should see a screen similar to the following. If you can see this, move on to the next section. ![SSH Terminal](SSHSuccess.png)
 
-8. TroubleShooting:  If you are unable to see this, make sure you typed in the `ssh` command, your username, and your password correctly. If this does not work, you may have to go back to [Account Lookup](https://sdacs.ucsd.edu/~icc/index.php) and change your password. 
+8. Troubleshooting:  If you are unable to see this, make sure you typed in the `ssh` command, your username, and your password correctly. If this does not work, you may have to go back to [Account Lookup](https://sdacs.ucsd.edu/~icc/index.php) and change your password. 
 
 ___
 
 ## Trying some Commands
 Command Line is a useful tool that is required in order to control actions within the server. Here are some commands that you can use in order to navigate the server's directory and do other cool functions.
 
+1. Now that you are connected to the server, we can try out some commands. Start off by typing in `pwd` in the terminal and clicking enter. 
+
+    Your terminal should look similar to this: 
+    ```
+    [cs15lsp22aoz@ieng6-203]:~:17$ pwd
+    /home/linux/ieng6/cs15lsp22/cs15lsp22aoz
+    ```
+    `pwd` stands for "Print Working Directory" and does exactly what its name suggests. It prints out the filepath to the directory that we are currently in. 
+
+2. Next, let's try the `ls` command. Once again, type in `ls` into the terminal and click enter. 
+
+    You should see something like this:
+    ```
+    [cs15lsp22aoz@ieng6-203]:~:18$ ls   
+    WhereAmI.class  WhereAmI.java  perl5
+    ```
+    If you see a different set of files or directories, don't worry about it. The important thing to know is that `ls` is used to list files within the current directory.
+
+3. Before we move on to a different command, try typing in `ls -a` and clicking enter. 
+
+    You should see something like this:
+    ```
+    [cs15lsp22aoz@ieng6-203]:~:20$ ls -a
+    .              .cache   .locallogin     .profile   WhereAmI.class
+    ..             .config  .login          .ssh       WhereAmI.java
+    .bash_history  .cshrc   .modulesbegenv  .zprofile  perl5
+    .bash_profile  .kshrc   .motd           .zshenv
+    .bashrc        .local   .procmailrc     .zshrc
+    ```
+    Despite using the "list files" command again, we can now see way more files and directories than we did previously. This is because `ls -a` is the `ls` command with the `-a` command, which shows us hidden files and directories, unlike the plain `ls` command. 
+
+4. Now, let's try the `mkdir` command. Type `mkdir test` into your terminal. After executing this command, try typing in `ls` again and see if you can find anything new. 
+
+    You should see something like this:
+    ```
+    [cs15lsp22aoz@ieng6-203]:~:20$ mkdir test
+    [cs15lsp22aoz@ieng6-203]:~:21$ ls
+    WhereAmI.class  WhereAmI.java  perl5  test
+    ```
+    Notice that there is a new directory called test in our current directory. This is because the `mkdir` command is used to make a new directory. So when we typed in `mkdir test` we made a new directory called test. 
+
+5. Let's test out the `cd` command now. Before we try it, just use the `pwd` command to see what directory we are currently in. Then, try `cd test` followed by `pwd` again. What do you think happened?
+
+    Your output should look like this:
+    ```
+    [cs15lsp22aoz@ieng6-203]:~:22$ pwd
+    /home/linux/ieng6/cs15lsp22/cs15lsp22aoz
+    [cs15lsp22aoz@ieng6-203]:~:23$ cd test
+    [cs15lsp22aoz@ieng6-203]:test:24$ pwd
+    /home/linux/ieng6/cs15lsp22/cs15lsp22aoz/test
+    ```
+    According to our `pwd` command we seem to have changed directories and entered the `/test` directory. This is because `cd` is used to change directories. `cd test` was used to change our directory to the `/test` directory. 
+
+6. Try typing in `cd ..` and see what directory you end up in. What do you think the `..` is used to represent?
+
+    Your terminal should look like this:
+    ```
+    [cs15lsp22aoz@ieng6-203]:test:24$ pwd
+    /home/linux/ieng6/cs15lsp22/cs15lsp22aoz/test
+    [cs15lsp22aoz@ieng6-203]:test:25$ cd ..
+    [cs15lsp22aoz@ieng6-203]:~:26$ pwd
+    /home/linux/ieng6/cs15lsp22/cs15lsp22aoz
+    ```
+    You should see that it looks like we left the `/test` directory and went back to our root directory. This is because the `cd ..` command is used to exit any given directory and go to its parent directory. 
+
+7. Lastly, lets use `rm` to remove a directory. First, type in `ls` to see what directories exist. Then, use `rm -d test` to delete the `/test` directory. Try using `ls` again to see if our directory was successfully deleted. 
+
+    Your terminal should look like this:
+    ```
+    [cs15lsp22aoz@ieng6-203]:~:27$ ls
+    WhereAmI.class  WhereAmI.java  perl5  test
+    [cs15lsp22aoz@ieng6-203]:~:28$ rm -d test
+    [cs15lsp22aoz@ieng6-203]:~:29$ ls
+    WhereAmI.class  WhereAmI.java  perl5
+    ```
+    The `rm` command is used to remove things. `rm -d` is used to remove directories. We used `rm -d test` in order to tell the computer to remove the specific `/test` directory that we made earlier. 
 ___
 
 ## Moving files with `scp`
