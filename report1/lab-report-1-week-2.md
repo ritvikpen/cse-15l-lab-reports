@@ -117,16 +117,62 @@ Command Line is a useful tool that is required in order to control actions withi
     WhereAmI.class  WhereAmI.java  perl5
     ```
     The `rm` command is used to remove things. `rm -d` is used to remove directories. We used `rm -d test` in order to tell the computer to remove the specific `/test` directory that we made earlier. 
+
 ___
 
 ## Moving files with `scp`
 `scp` is a useful command that can help us move files from our local system to the server. Using it is necessary in order to transfer important files (such as code) between systems. 
 
+1. Start by creating a simple text file on your local machine. In my case, I created a file called `test.txt`. 
+
+2. Using terminal and the `cd` command, navigate your local machine's directories in order to go to the directory you put the file in. Use the `ls` command to make sure you are in the right place.
+
+    Here is what it should look like at the end:
+    ```
+    ritviksiddhapenchala@Ritviksiddhas-MacBook-Air-2 test % ls
+    test.txt
+    ```
+
+3. Now, let's try using the `scp` command to send this file over to our remote server. Type in `scp test.txt cs15lsp22aoz@ieng6.ucsd.edu:~/`. Make sure to use your username and the name of your file. 
+
+    You should see this output:
+    ```
+    ritviksiddhapenchala@Ritviksiddhas-MacBook-Air-2 test % scp test.txt cs15lsp22aoz@ieng6.ucsd.edu:~/
+    test.txt                                      100%   12     1.8KB/s   00:00    
+
+    ```
+    You may be prompted to enter your password in order to connect to the remote server. Enter your password if asked to do so. 
+
+4. Let's check to see if our file is actually on the remote system by using `ssh` and `ls` commands. Try to do this on your own. Refer to previous sections if needed. If you need a hint, check out the code below. 
+
+    Here is how I would check to see if the file was on the server:
+    ```
+    ritviksiddhapenchala@Ritviksiddhas-MacBook-Air-2 test % ssh cs15lsp22aoz@ieng6.ucsd.edu
+
+    Last login: Thu Apr  7 12:44:46 2022 from 100.64.60.239
+    quota: No filesystem specified.
+    Hello cs15lsp22aoz, you are currently logged into ieng6-203.ucsd.edu
+
+    You are using 0% CPU on this system
+
+    Cluster Status 
+    Hostname     Time    #Users  Load  Averages  
+    ieng6-201   13:35:02   8  26.90,  25.10,  24.74
+    ieng6-202   13:35:01   9  0.46,   0.31,   0.19
+    ieng6-203   13:35:01   8  1.48,   1.37,   1.29
+
+    
+    Thu Apr 07, 2022  1:35pm - Prepping cs15lsp22
+    [cs15lsp22aoz@ieng6-203]:~:31$ ls
+    WhereAmI.class  WhereAmI.java  perl5  test.txt
+    ```
+    
 ___
 
 ## Setting up an SSH Key
 Constantly typing in your password in order to connect with your system is annoying. We can create an SSH Key to essentially "register" your personal machine with the server and make sure it no longer requires you to type in your password. 
 
+1. 
 ___
 
 ## Optimizing Remote Running
