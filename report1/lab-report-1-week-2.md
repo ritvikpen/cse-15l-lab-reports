@@ -166,16 +166,54 @@ ___
     [cs15lsp22aoz@ieng6-203]:~:31$ ls
     WhereAmI.class  WhereAmI.java  perl5  test.txt
     ```
-    
+
 ___
 
 ## Setting up an SSH Key
 Constantly typing in your password in order to connect with your system is annoying. We can create an SSH Key to essentially "register" your personal machine with the server and make sure it no longer requires you to type in your password. 
 
-1. 
+1. Start by typing in the `ssh-keygen` command. You should stick to the default file location for the keys. 
+
+2. Connect to the server using an `ssh cs15lsp22aoz@ieng6.ucsd.edu` command. 
+
+3. Use the command `mkdir .ssh` to make a new directory with the name ".ssh". Once done, use `exit` to return to your local machine. 
+
+4. Navigate to the ".ssh" directory on your local machine. There should be a file called "id_rsa.pub" in this directory. Use the `scp` command to send the id_rsa.pub file to the server. The command should look like `scp id_rsa.pub cs15lsp22apz@ieng6.ucsd.edu:~/.ssh/authorized_keys`. 
+
+5. Try logging in now. You should be able to use the `ssh` command without needing to type in the password. 
+
 ___
 
 ## Optimizing Remote Running
 You might have noticed that, even with the SSH Key, it still takes quite a few commands to even do the most basic tasks. Here are a couple of ways you can optimize this process.
+
+1. One easy way to reduce the ammount of typing is by using arrow keys. Using the up arrow key allows you to revisit previous commands from the terminal.
+
+2. Another way to reduce the number of commands you need is by grouping `ssh` commands with commands you want to run on the server. Type the command you want to execute in the server in quotations following the `ssh` command. Here is an example:
+    ```
+    ritviksiddhapenchala@Ritviksiddhas-MacBook-Air-2 ~ % ssh cs15lsp22aoz@ieng6.ucsd.edu "ls"
+    perl5
+    test.txt
+    WhereAmI.class
+    WhereAmI.java
+    ```
+
+3. Lastly, you can use a semicolon to execute multiple commands in the same terminal line. By separating commands with a semicolon, you can have to different terminal commands in the same line. Try combining all of these concepts to see what shortcuts you can come up with on your own. Here is an example to get you started:
+
+    ```
+    ritviksiddhapenchala@Ritviksiddhas-MacBook-Air-2 ~ % ssh cs15lsp22aoz@ieng6.ucsd.edu "ls; mkdir newDirectory; ls"
+
+    perl5
+    test.txt
+    WhereAmI.class
+    WhereAmI.java
+    newDirectory
+    perl5
+    test.txt
+    WhereAmI.class
+    WhereAmI.java
+    ```
+
+    First, we print out everything in the root directory of the server. Then we create a new Directory and print out the directories again. We can see how everything appears twice except for newDirectory which didn't exist until the mkdir command. See what you can do combining the quotation marks after the ssh command and the semicolon method of running multiple commands!
 
 ___
