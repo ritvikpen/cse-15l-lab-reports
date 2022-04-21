@@ -180,7 +180,55 @@ Constantly typing in your password in order to connect with your system is annoy
 
 4. Navigate to the ".ssh" directory on your local machine. There should be a file called "id_rsa.pub" in this directory. Use the `scp` command to send the id_rsa.pub file to the server. The command should look like `scp id_rsa.pub cs15lsp22apz@ieng6.ucsd.edu:~/.ssh/authorized_keys`. 
 
-5. Try logging in now. You should be able to use the `ssh` command without needing to type in the password. 
+5. Try logging in now. You should be able to use the `ssh` command without needing to type in the password. Here's what it should look like: 
+    ```
+    Last login: Thu Apr 14 11:13:57 on ttys001
+    ritviksiddhapenchala@Ritviksiddhas-MacBook-Air-2 ~ % ssh cs15lsp22aoz@ieng6.ucsd.edu
+    ============================ NOTICE =================================
+    Authorized use of this system is limited to password-authenticated
+    usernames which are issued to individuals and are for the sole use of
+    the person to whom they are issued.
+
+    Privacy notice: be aware that computer files, electronic mail and 
+    accounts are not private in an absolute sense.  You are responsible
+    for adhering to the ETS Acceptable Use Policies, which you can review at:
+    https://blink.ucsd.edu/faculty/instruction/tech-guide/policies/ets-acceptable-use-policies.html
+    =====================================================================
+
+    *** Problems, Suggestions, or Feedback ***
+        
+        For help requests, please create a ticket at:
+        https://support.ucsd.edu/its 
+
+        You may also report issues, suggestions, or feedback by e-mailing root on any system:
+        mail -s "Your subject here" root
+        Type your message - Ctrl+D to send
+        
+    *** Access our Linux ssh terminals or remote desktops via a web browser at: ***
+        https://linuxcloud.ucsd.edu
+
+        All accounts must be enrolled in Duo for access. No VPN required.
+
+
+    -------------------------------------------------------
+
+    quota: No filesystem specified.
+    Hello cs15lsp22aoz, you are currently logged into ieng6-201.ucsd.edu
+
+    You are using 0% CPU on this system
+
+    Cluster Status 
+    Hostname     Time    #Users  Load  Averages  
+    ieng6-201   17:10:01   9   2.06,  2.18,  2.24
+    ieng6-202   17:10:02   10  0.12,  0.28,  0.33
+    ieng6-203   17:10:01   7   3.54,  3.24,  3.49
+
+    
+    Wed Apr 20, 2022  5:11pm - Prepping cs15lsp22
+    [cs15lsp22aoz@ieng6-201]:~:33$ 
+
+    ```
+    Notice how there is no prompt to type in my password anymore.
 
 ___
 
